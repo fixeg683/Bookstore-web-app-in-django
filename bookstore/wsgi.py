@@ -1,20 +1,10 @@
-"""
-WSGI config for bookstore project.
+from fastapi import FastAPI
 
-It exposes the WSGI callable as a module-level variable named ``application``.
+application = FastAPI()
 
-For more information on this file, see
-https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/
-"""
+@application.get("/")
+async def root():
+    return {"message": "Hello World"}
 
-import os
-
-from django.core.wsgi import get_wsgi_application
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bookstore.settings')
-
-application = get_wsgi_application()
-
+# This is the WSGI application variable that Vercel looks for
 app = application
-
-
